@@ -1,19 +1,19 @@
 export const sliderItems = [
   {
     id: 1,
-    src: '/assets/iphone13.jpg',
+    src: '/e-commerce-app/assets/iphone13.jpg',
     title: 'iPhone 13',
     desc: 'Your new superpower'
   },
   {
     id: 2,
-    src: '/assets/studio_display.jpg',
+    src: '/e-commerce-app/assets/studio_display.jpg',
     title: 'Studio Display',
     desc: 'A sight to be bold'
   },
   {
     id: 3,
-    src: '/assets/watch.jpg',
+    src: '/e-commerce-app/assets/watch.jpg',
     title: 'WATCH SERIES 7',
     desc: "It's our largest display yet."
   }
