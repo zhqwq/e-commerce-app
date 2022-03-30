@@ -2,6 +2,7 @@ import { Search, ShoppingCartOutlined } from '@mui/icons-material'
 import { Badge } from '@mui/material'
 import React from 'react'
 import styled from 'styled-components'
+import { mobile } from '../responsive'
 
 const Container = styled.div`
   height: 60px;
@@ -18,6 +19,7 @@ const Left = styled.div`
   flex: 1;
   display: flex;
   align-items: center;
+  ${mobile({ display: 'none' })}
 `
 
 const Language = styled.span`
@@ -50,6 +52,7 @@ const Right = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  ${mobile({ display: 'none' })}
 `
 
 const MenuItem = styled.div`
@@ -65,7 +68,7 @@ const NavBar = () => {
         <Left>
           <Language>EN</Language>
           <SearchContainer>
-            <Input />
+            <Input placeholder="Search" />
             <Search style={{ color: 'gray' }} />
           </SearchContainer>
         </Left>
