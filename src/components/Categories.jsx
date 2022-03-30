@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { categories } from '../data'
+import { categories } from '../mock_data'
 import CategoryItem from './CatergoryItem'
 
 const Container = styled.div`

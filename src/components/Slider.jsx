@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined'
 import ArrowBackIosOutlinedIcon from '@mui/icons-material/ArrowBackIosOutlined'
 import { useState } from 'react'
-import { sliderItems } from '../data'
+import { sliderItems } from '../mock_data'
 
 const Container = styled.div`
   width: 100%;
