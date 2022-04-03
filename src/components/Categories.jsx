@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { categories } from '../mock_data'
+import { categories } from '../data'
 import CategoryItem from './CatergoryItem'
 import { mobile } from '../responsive'
 
