@@ -1,6 +1,7 @@
 import { FavoriteBorder, SearchOutlined, ShoppingCartOutlined } from '@mui/icons-material'
 import styled from 'styled-components'
 
+// 相对于 Container 进行绝对定位
 const Info = styled.div`
   opacity: 0;
   width: 100%;
@@ -56,7 +57,7 @@ const Icon = styled.div`
 const Product = ({ item }) => {
   return (
     <Container>
-      <Image src={item.src} />
+      <Image src={item.img} />
       <Info>
         <Icon>
           <ShoppingCartOutlined />

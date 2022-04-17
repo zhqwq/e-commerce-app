@@ -23,21 +23,24 @@ export const categories = [
   {
     id: 1,
     src: 'https://images.pexels.com/photos/5886041/pexels-photo-5886041.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-    title: 'SHIRT STYLE!'
+    title: 'SHIRT STYLE!',
+    category: 'woman'
   },
   {
     id: 2,
     src: 'https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-    title: 'LOUNGEWEAR LOVE'
+    title: 'LOUNGEWEAR LOVE',
+    category: 'coat'
   },
   {
     id: 3,
     src: 'https://images.pexels.com/photos/5480696/pexels-photo-5480696.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
-    title: 'LIGHT JACKETS'
+    title: 'LIGHT JACKETS',
+    category: 'jejeansns'
   }
 ]
 
-export const products = [
+export const popularProducts = [
   {
     id: 1,
     src: 'https://www.prada.com/content/dam/pradabkg_products/S/SC5/SC567/10HOF0304/SC567_10HO_F0304_S_221_SLF.jpg/jcr:content/renditions/cq5dam.web.hebebed.1250.1250.jpg,https://www.prada.com/content/dam/pradabkg_products/S/SC5/SC567/10HOF0304/SC567_10HO_F0304_S_221_SLF.jpg/jcr:content/renditions/cq5dam.web.hebebed.2000.2000.jpg'

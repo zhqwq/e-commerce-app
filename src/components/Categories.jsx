@@ -9,7 +9,7 @@ const Container = styled.div`
   justify-content: space-between;
   ${mobile({ flexDirection: 'column', padding: '0px' })}
 `
-
+// Categories render many categoryItems
 const Categories = () => {
   return (
     <Container>
