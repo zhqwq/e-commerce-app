@@ -57,7 +57,7 @@ const Products = ({ category, filter, sort }) => {
   }, [sort])
 
   // If there has category show filteredProducts, otherwise show products
-  return <Container>{category ? filteredProducts.map(item => <Product item={item} key={item._id} />) : products.map(item => <Product item={item} key={item._id} />)}</Container>
+  return <Container>{category ? filteredProducts.map(item => <Product item={item} key={item._id} />) : products.slice(0, 8).map(item => <Product item={item} key={item._id} />)}</Container>
 }
 
 export default Products

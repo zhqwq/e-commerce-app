@@ -4,6 +4,11 @@ import Footer from '../components/Footer'
 import NavBar from '../components/NavBar'
 import Newsletter from '../components/Newsletter'
 import { Add, Remove } from '@mui/icons-material'
+import { useLocation } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { publicRequest } from '../utils/request'
+import { addProduct } from '../redux/cartSlice'
+import { useDispatch } from 'react-redux'
 
 const Container = styled.div``
 const Wrapper = styled.div`
@@ -94,43 +99,74 @@ const Button = styled.button`
 `
 // 单个产品页
 const Product = () => {
+  const location = useLocation()
+  const id = location.pathname.split('/')[2]
+  const [product, setProduct] = useState({})
+  const [quantity, setQuantity] = useState(1)
+  const [size, setSize] = useState('')
+  const [color, setColor] = useState('')
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    const getProduct = async () => {
+      try {
+        const res = await publicRequest.get(`/product/find/${id}`)
+        setProduct(res.data)
+      } catch (err) {}
+    }
+    getProduct()
+  }, [id])
+
+  const handleQuantity = type => {
+    if (type === 'dec') {
+      if (quantity > 1) {
+        setQuantity(quantity - 1)
+      }
+    } else if (type === 'inc') {
+      setQuantity(quantity + 1)
+    }
+  }
+
+  const handleClick = () => {
+    // update cart
+    dispatch(addProduct({ ...product, color, size, quantity }))
+  }
+
   return (
     <Container>
       <Announcement />
       <NavBar />
       <Wrapper>
         <ImgContainer>
-          <Image src={'https://www.prada.com/content/dam/pradabkg_products/1/1BA/1BA863/2FKLF0Y30/1BA863_2FKL_F0Y30_V_OOO_SLF.jpg/_jcr_content/renditions/cq5dam.web.hebebed.800.1000.webp'} />
+          <Image src={product.img} />
         </ImgContainer>
         <InfoContainer>
-          <Title>Prada Symbole</Title>
-          <Desc>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Assumenda nulla laudantium eius ex reprehenderit, repudiandae numquam quia quisquam veniam repellat perspiciatis debitis magnam delectus enim dolorem maxime quasi inventore rem.</Desc>
-          <Price>$ 20</Price>
+          <Title>{product.title}</Title>
+          <Desc>{product.desc}</Desc>
+          <Price>$ {product.price}</Price>
           <FilterContainer>
             <Filter>
               <FilterTitle>Color</FilterTitle>
-              <FilterColor color="black" />
-              <FilterColor color="darkblue" />
-              <FilterColor color="gray" />
+              {product.color?.map(c => (
+                <FilterColor color={c} key={c} onClick={() => setColor(c)} />
+              ))}
             </Filter>
             <Filter>
               <FilterTitle>Size</FilterTitle>
-              <FilterSize>
-                <FilterSizeOption>XS</FilterSizeOption>
-                <FilterSizeOption>S</FilterSizeOption>
-                <FilterSizeOption>M</FilterSizeOption>
-                <FilterSizeOption>L</FilterSizeOption>
-                <FilterSizeOption>XL</FilterSizeOption>
+              <FilterSize onChange={e => setSize(e.target.value)}>
+                {product.size?.map(s => (
+                  <FilterSizeOption key={s}>{s.toUpperCase()}</FilterSizeOption>
+                ))}
               </FilterSize>
             </Filter>
           </FilterContainer>
           <AddContainer>
             <AmountContainer>
-              <Remove />
-              <Amount>1</Amount>
-              <Add />
+              <Remove onClick={() => handleQuantity('dec')} />
+              <Amount>{quantity}</Amount>
+              <Add onClick={() => handleQuantity('inc')} />
             </AmountContainer>
-            <Button>ADD TO CART</Button>
+            <Button onClick={handleClick}>ADD TO CART</Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>

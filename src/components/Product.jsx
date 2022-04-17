@@ -1,5 +1,6 @@
 import { FavoriteBorder, SearchOutlined, ShoppingCartOutlined } from '@mui/icons-material'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 // 相对于 Container 进行绝对定位
 const Info = styled.div`
@@ -63,7 +64,9 @@ const Product = ({ item }) => {
           <ShoppingCartOutlined />
         </Icon>
         <Icon>
-          <SearchOutlined />
+          <Link to={`/product/${item._id}`} style={{ textDecoration: 'none', color: 'black' }}>
+            <SearchOutlined />
+          </Link>
         </Icon>
         <Icon>
           <FavoriteBorder />
