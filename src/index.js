@@ -9,7 +9,7 @@ import { PersistGate } from 'redux-persist/integration/react'
 ReactDOM.render(
   // 将 store 暴露给所有组件
   <Provider store={store}>
-    <BrowserRouter>
+    <BrowserRouter basename="/e-commerce-app">
       <PersistGate loading={null} persistor={persistor}>
         <App />
       </PersistGate>
